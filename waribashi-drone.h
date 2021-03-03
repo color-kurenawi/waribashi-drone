@@ -1,0 +1,6 @@
+#ifndef WARIBASHI_DRONE_H
+#define WARIBASHI_DRONE_H
+
+#define SAMPLING_INTERVAL 100
+
+#endif
