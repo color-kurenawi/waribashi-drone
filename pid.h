@@ -9,7 +9,7 @@ class PID{
 
     // v_vel = vertical velocity
     // a_vel = angular velocity
-    void update_pid(float RPY_data[3], float command_var[4]);
+    void update_pid(float RPY_data[3], int command_var[4]);
     void calc_pid();
     void get_pid_res(float data[3]);
 

@@ -22,7 +22,7 @@ void PID::get_pid_res(float data[3]){
     for (int i = 0; i < 3; ++i) data[i] = pid_res[i];
 }
 
-void PID::update_pid(float RPY_data[3], float command_var[4]){
+void PID::update_pid(float RPY_data[3], int command_var[4]){
     for(int i=0; i<2; i++) pid_p[i] = RPY_data[i] - command_var[i];
     float a_vel = calc_angular_velocity(RPY_data[2]);
     pid_p[2] = command_var[2] - a_vel;
