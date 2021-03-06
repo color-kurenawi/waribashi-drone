@@ -8,4 +8,6 @@
 #define MOTOR_PIN_02 19
 #define MOTOR_PIN_03 33
 
+#define RECIEVE_DATA_SIZE 5
+
 #endif
