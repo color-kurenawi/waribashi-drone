@@ -1,5 +1,5 @@
-#ifndef imu_mpu6050
-#define imu_mpu6050
+#ifndef IMU_MPU6050_H
+#define IMU_MPU6050_H
 
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
@@ -12,8 +12,8 @@ class MPU6050 : public Adafruit_MPU6050 {
     public:
     MPU6050();
 
-    void sensor_setup();
-    void sensor_update();
+    void setup();
+    void update_sensor();
     void update_offset(int);
 
     float get_aX();

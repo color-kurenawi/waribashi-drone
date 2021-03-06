@@ -2,7 +2,7 @@
 
 MPU6050::MPU6050() {}
 
-void MPU6050::sensor_update(){ getEvent(&accel, &gyro, &temp); }
+void MPU6050::update_sensor(){ getEvent(&accel, &gyro, &temp); }
 
 void MPU6050::update_offset(int offset_seconds=2){
     float aXsum = 0;
@@ -54,7 +54,7 @@ float MPU6050::get_gX(){return gyro.gyro.x - gXOffset;}
 float MPU6050::get_gY(){return gyro.gyro.y - gYOffset;}
 float MPU6050::get_gZ(){return gyro.gyro.z - gZOffset;}
 
-void MPU6050::sensor_setup(){
+void MPU6050::setup(){
     begin();
     setAccelerometerRange(MPU6050_RANGE_4_G);
     setGyroRange(MPU6050_RANGE_500_DEG);
