@@ -3,8 +3,10 @@
 
 #include <Adafruit_MPU6050.h>
 #include <Adafruit_Sensor.h>
+#include <MadgwickAHRS.h>
 #include <Wire.h>
 #include <Arduino.h>
+#include "waribashi-drone.h"
 
 #define GRAVITY 9.80665
 
@@ -13,6 +15,7 @@ class MPU6050 : public Adafruit_MPU6050 {
     MPU6050();
 
     void setup();
+    void update_attitude();
     void update_sensor();
     void update_offset(int);
 
@@ -28,7 +31,10 @@ class MPU6050 : public Adafruit_MPU6050 {
     void get_gyro(float gyro_data[3]);
     void get_sensor_value(float accel_data[3], float gyro_data[3]);
 
+    void get_attitude(float RPY_data[3]);
+
     private:
+    float sampling_rate;
     Adafruit_Sensor *mpu_accel, *mpu_gyro;
     sensors_event_t accel;
     sensors_event_t gyro;
@@ -42,6 +48,8 @@ class MPU6050 : public Adafruit_MPU6050 {
 
     float accel_val[3] = {0.0f, 0.0f, 0.0f};
     float gyro_val[3] = {0.0f, 0.0f, 0.0f};
+
+    float rpy_val[3] = {0.0f, 0.0f, 180.0f};
 };
 
 #endif

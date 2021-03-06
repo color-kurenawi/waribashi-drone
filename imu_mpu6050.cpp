@@ -1,6 +1,18 @@
 #include "imu_mpu6050.h"
 
+Madgwick MadgwickFilter
+
 MPU6050::MPU6050() {}
+
+void MPU6050::update_attitude() {
+    MadgwickFilter.updateIMU(
+        accel_val[0], accel_val[1], accel_val[2],
+        gyro_val[0], gyro_val[1], gyro_val[2]
+    );
+    rpy_val[0] = MadgwickFilter.getRoll();
+    rpy_val[1] = MadgwickFilter.getPitch();
+    rpy_val[2] = MadgwickFilter.getYaw();
+}
 
 void MPU6050::update_sensor(){ 
     getEvent(&accel, &gyro, &temp); 
@@ -81,10 +93,19 @@ void MPU6050::get_sensor_value(float accel_data[3], float gyro_data[3]){
     get_gyro(gyro_data);
 }
 
+void MPU6050::get_attitude(float RPY_data[3]){
+    RPY_data[0] = rpy_val[0];
+    RPY_data[1] = rpy_val[1];
+    RPY_data[2] = rpy_val[2];
+}
+
 void MPU6050::setup(){
     begin();
     setAccelerometerRange(MPU6050_RANGE_4_G);
     setGyroRange(MPU6050_RANGE_500_DEG);
     setFilterBandwidth(MPU6050_BAND_44_HZ);
     update_offset();
+
+    sampling_rate = 1.0 / ((float)SAMPLING_INTERVAL / 1000);
+    MadgwickFilter.begin(sampling_rate);
 }
