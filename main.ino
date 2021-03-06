@@ -1,24 +1,43 @@
 
 #include "imu_mpu6050.h"
+#include "reciever.h"
+#include "pid.h"
+#include "motor.h"
 
+
+Reciever reciever;
 MPU6050 myMPU;
+PID pid;
+Motor motor;
 
 void setup() {
     // put your setup code here, to run once:
     Serial.begin(115200);
-    myMPU.sensor_setup();
+    reciever.setup();
+    myMPU.setup();
+    motor.setup();
 }
 
 void loop() {
     // put your main code here, to run repeatedly:
-    myMPU.sensor_update();
-    float aX = myMPU.get_aX();
-    float aY = myMPU.get_aY();
-    float aZ = myMPU.get_aZ();
-    float gX = myMPU.get_gX();
-    float gY = myMPU.get_gY();
-    float gZ = myMPU.get_gZ();
-    Serial.println(aX);
-    Serial.println(aY);
-    Serial.println(aZ);
+    int command_var[4];
+    int throttol;
+    float RPY_data[3];
+    float pid_res[3];
+
+    reciever.update_command();
+    reciever.get_command(command_var);
+
+    myMPU.update_sensor();
+    myMPU.update_attitude();
+    myMPU.get_attitude(RPY_data);
+
+    pid.update_pid(RPY_data, command_var);
+    pid.get_pid_res(pid_res);
+
+    throttol = command_var[3];
+    motor.update_signal(pid_res, throttol);
+    motor.control();
+
+    delay(SAMPLING_INTERVAL);
 }
