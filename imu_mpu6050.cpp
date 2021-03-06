@@ -16,7 +16,7 @@ void MPU6050::update_offset(int offset_seconds=2){
     int times = 0;
 
     while (true){
-        sensor_update();
+        update_sensor();
         aXsum += accel.acceleration.x; 
         aYsum += accel.acceleration.y; 
         aZsum += accel.acceleration.z; 
