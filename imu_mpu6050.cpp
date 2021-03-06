@@ -2,7 +2,17 @@
 
 MPU6050::MPU6050() {}
 
-void MPU6050::update_sensor(){ getEvent(&accel, &gyro, &temp); }
+void MPU6050::update_sensor(){ 
+    getEvent(&accel, &gyro, &temp); 
+
+    accel_val[0] = get_aX();
+    accel_val[1] = get_aY();
+    accel_val[2] = get_aZ();
+
+    gyro_val[0] = get_gX();
+    gyro_val[1] = get_gY();
+    gyro_val[2] = get_gZ();
+}
 
 void MPU6050::update_offset(int offset_seconds=2){
     float aXsum = 0;
@@ -53,6 +63,23 @@ float MPU6050::get_aZ(){return GRAVITY + accel.acceleration.z - aZOffset;}
 float MPU6050::get_gX(){return gyro.gyro.x - gXOffset;}
 float MPU6050::get_gY(){return gyro.gyro.y - gYOffset;}
 float MPU6050::get_gZ(){return gyro.gyro.z - gZOffset;}
+
+void MPU6050::get_accel(float accel_data[3]){
+    accel_data[0] = accel_val[0];
+    accel_data[1] = accel_val[1];
+    accel_data[2] = accel_val[2];
+}
+
+void MPU6050::get_gyro(float gyro_data[3]){
+    gyro_data[0] = gyro_val[0];
+    gyro_data[1] = gyro_val[1];
+    gyro_data[2] = gyro_val[2];
+}
+
+void MPU6050::get_sensor_value(float accel_data[3], float gyro_data[3]){
+    get_accel(accel_data);
+    get_gyro(gyro_data);
+}
 
 void MPU6050::setup(){
     begin();

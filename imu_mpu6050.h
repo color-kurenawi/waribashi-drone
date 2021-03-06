@@ -24,6 +24,10 @@ class MPU6050 : public Adafruit_MPU6050 {
     float get_gY();
     float get_gZ();
 
+    void get_accel(float accel_data[3]);
+    void get_gyro(float gyro_data[3]);
+    void get_sensor_value(float accel_data[3], float gyro_data[3]);
+
     private:
     Adafruit_Sensor *mpu_accel, *mpu_gyro;
     sensors_event_t accel;
@@ -35,6 +39,9 @@ class MPU6050 : public Adafruit_MPU6050 {
     float gXOffset=0;
     float gYOffset=0;
     float gZOffset=0;
+
+    float accel_val[3] = {0.0f, 0.0f, 0.0f};
+    float gyro_val[3] = {0.0f, 0.0f, 0.0f};
 };
 
 #endif
