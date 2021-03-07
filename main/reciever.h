@@ -14,7 +14,8 @@ class Reciever {
     void get_command(int command_var[4]);
 
     private:
-    int8_t receive_command[RECIEVE_DATA_SIZE] = {'C', 0, 0, 0, 0}; // Flag(C:Control), Roll(deg), Pitch(deg), Yaw speed(deg/SAMPLING_INTERVAL), throttol([0, 255])
+    uint8_t receive_command[RECIEVE_DATA_SIZE] = {'C', UINT8_MAX/2, UINT8_MAX/2, UINT8_MAX/2, 0}; // Flag(C:Control), Roll(deg), Pitch(deg), Yaw speed(deg/SAMPLING_INTERVAL), throttol([0, 255])
+    int translated_command[RECIEVE_DATA_SIZE] = {'C', 0, 0, 0, 0};
 
 };
 
