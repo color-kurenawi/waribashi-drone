@@ -25,7 +25,9 @@ void Motor::update_signal(float pid_res[3], int throttol){
     motor_signal[2] = + pid_res[0] + pid_res[1] - pid_res[2] + throttol;
     motor_signal[3] = - pid_res[0] + pid_res[1] + pid_res[2] + throttol;
 
-    for (int i=0; i<4; ++i) {constrain(motor_signal[i], 0, 255);}
+    for (int i=0; i<4; ++i) {
+        motor_signal[i] = constrain(motor_signal[i], 0, 255);
+    }
 }
 
 void Motor::control(){
