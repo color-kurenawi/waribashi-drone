@@ -7,8 +7,8 @@
 
 #define LEFT_X_PIN 34
 #define LEFT_Y_PIN 35
-#define RIGHT_X_PIN 4
-#define RIGHT_Y_PIN 0
+#define RIGHT_X_PIN 36
+#define RIGHT_Y_PIN 39
 
 #define READ_MIN 0
 #define READ_MAX 4095
