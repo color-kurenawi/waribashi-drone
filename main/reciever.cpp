@@ -5,7 +5,7 @@ BluetoothSerial SerialBT;
 Reciever::Reciever() {}
 
 void Reciever::setup(){
-    Serial.begin(1152000);
+    Serial.begin(115200);
     SerialBT.begin("ESP32RECIEVER");
 }
 
@@ -15,7 +15,7 @@ void Reciever::update_command() {
     }
 
     translated_command[0] = receive_command[0];
-    for (int i=1; i<4; ++i) translated_command[i] = receive_command[i] - UINT8_MAX;
+    for (int i=1; i<4; ++i) translated_command[i] = receive_command[i] - UINT8_MAX/2;
     translated_command[4] = receive_command[4];
 }
 
