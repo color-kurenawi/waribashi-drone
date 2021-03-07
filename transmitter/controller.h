@@ -8,6 +8,7 @@ class Controller{
     public:
     Controller();
 
+    void setup();
     void update_command();
     void get_command(int8_t command_data[4]);
 

@@ -2,6 +2,13 @@
 
 Controller::Controller() {}
 
+void Controller::setup(){
+    pinMode(LEFT_X_PIN, INPUT);
+    pinMode(LEFT_Y_PIN, INPUT);
+    pinMode(RIGHT_X_PIN, INPUT);
+    pinMode(RIGHT_Y_PIN, INPUT);
+}
+
 void Controller::update_command(){
     input_command();
     translate_command();
