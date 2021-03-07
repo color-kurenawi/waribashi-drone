@@ -31,6 +31,31 @@ void PID::update_pid(float RPY_data[3], int command_var[4]){
     for (int i = 0; i < 3; ++i) pid_res[i] = Kp[i]*pid_p[i] + Ki[i]*pid_i[i] + Kd[i]*pid_d[i];
 }
 
+void PID::print_pid_elements(){
+    Serial.println(
+    (String)"pid Roll elem: "
+    + (String)pid_p[0] + (String)","
+    + (String)pid_i[0] + (String)","
+    + (String)pid_d[0] + (String)","
+    );
+
+    Serial.println(
+    (String)"pid Pitch elem: "
+    + (String)pid_p[1] + (String)","
+    + (String)pid_i[1] + (String)","
+    + (String)pid_d[1] + (String)","
+    );
+
+    Serial.println(
+    (String)"pid Yaw Speed elem: "
+    + (String)pid_p[2] + (String)","
+    + (String)pid_i[2] + (String)","
+    + (String)pid_d[2] + (String)","
+    );
+    
+    Serial.println();
+}
+
 void PID::print_pid_res(){
     Serial.println(
     (String)"pid Rall, Pitch, Yaw speed: "

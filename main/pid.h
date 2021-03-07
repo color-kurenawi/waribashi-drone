@@ -14,6 +14,7 @@ class PID{
     void get_pid_res(float data[3]);
 
     // デバッグ用関数
+    void print_pid_elements();
     void print_pid_res();
 
     private:
