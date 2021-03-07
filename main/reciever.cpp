@@ -25,3 +25,11 @@ void Reciever::get_command(int command_var[4]){
     command_var[2] = translated_command[3];
     command_var[3] = translated_command[4];
 }
+
+void Reciever::print_command(){
+    Serial.println("command");
+    Serial.println(translated_command[1]);
+    Serial.println(translated_command[2]);
+    Serial.println(translated_command[3]);
+    Serial.println(translated_command[4]);
+}
