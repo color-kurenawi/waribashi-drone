@@ -20,8 +20,6 @@
 
 #define YAW_SPEED_MIN -30
 #define YAW_SPEED_MAX 30
-#define YAW_SPEED_DIFF_MIN -10
-#define YAW_SPEED_DIFF_MAX 10
 
 #define THROTTOL_MIN 0
 #define THROTTOL_MAX 255

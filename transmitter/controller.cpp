@@ -22,15 +22,14 @@ void Controller::input_command(){
 }
 
 void Controller::translate_command(){
-    translated_command[0] = map(right_x, READ_MIN, READ_MAX, ROLL_MIN, ROLL_MAX);
+    translated_command[0] = - map(right_x, READ_MIN, READ_MAX, ROLL_MIN, ROLL_MAX) + UINT8_MAX/2;
 
-    translated_command[1] = map(right_y, READ_MIN, READ_MAX, PITCH_MIN, PITCH_MAX);
+    translated_command[1] = map(right_y, READ_MIN, READ_MAX, PITCH_MIN, PITCH_MAX) + UINT8_MAX/2;
 
-    translated_command[2] = angular_speed + map(left_y, READ_MIN, READ_MAX, YAW_SPEED_DIFF_MIN, YAW_SPEED_DIFF_MAX);
-    translated_command[2] = constrain(translated_command[2], YAW_SPEED_MIN, YAW_SPEED_MAX);
+    translated_command[2] = map(left_x, READ_MIN, READ_MAX, YAW_SPEED_MIN, YAW_SPEED_MAX) + UINT8_MAX/2;
 
-    translated_command[3] = throttol + map(left_x, READ_MIN, READ_MAX, THROTTOL_DIFF_MIN, THROTTOL_DIFF_MAX);
-    translated_command[3] = constrain(translated_command[3], THROTTOL_MIN, THROTTOL_MAX);
+    int tmp = (int)translated_command[3] - map(left_y, READ_MIN, READ_MAX, THROTTOL_DIFF_MIN, THROTTOL_DIFF_MAX);
+    translated_command[3] = constrain(tmp, THROTTOL_MIN, THROTTOL_MAX);
 }
 
 void Controller::get_command(int8_t command_data[4]){

@@ -27,7 +27,7 @@ class Controller{
     int throttol = 0;
     int angular_speed = 0;
 
-    int8_t translated_command[4];
+    uint8_t translated_command[4];
 };
 
 #endif
