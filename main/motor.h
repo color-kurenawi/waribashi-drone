@@ -13,6 +13,9 @@ class Motor{
     void control();
     void stop();
 
+    // デバッグ用関数
+    void print_signal();
+
     private:
     float motor_signal[4] = {0, 0, 0, 0};
 

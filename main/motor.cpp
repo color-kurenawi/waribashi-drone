@@ -40,3 +40,12 @@ void Motor::stop(){
     }
 }
 
+void Motor::print_signal(){
+    Serial.println(
+    (String)"Signals: "
+    + (String)motor_signal[0] + (String)","
+    + (String)motor_signal[1] + (String)","
+    + (String)motor_signal[2] + (String)","
+    + (String)motor_signal[3]
+    );
+}
