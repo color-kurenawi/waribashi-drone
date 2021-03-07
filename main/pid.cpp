@@ -53,8 +53,6 @@ void PID::print_pid_elements(){
     + (String)pid_i[2] + (String)","
     + (String)pid_d[2] + (String)","
     );
-
-    Serial.println();
 }
 
 void PID::print_pid_res(){
