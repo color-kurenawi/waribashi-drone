@@ -6,8 +6,8 @@ MPU6050::MPU6050() {}
 
 void MPU6050::update_attitude() {
     MadgwickFilter.updateIMU(
-        accel_val[0], accel_val[1], accel_val[2],
-        gyro_val[0], gyro_val[1], gyro_val[2]
+        gyro_val[0], gyro_val[1], gyro_val[2],
+        accel_val[0], accel_val[1], accel_val[2]
     );
     rpy_val[0] = MadgwickFilter.getRoll();
     rpy_val[1] = MadgwickFilter.getPitch();
