@@ -11,7 +11,7 @@ class Transmitter{
     Transmitter();
 
     void setup();
-    void set_command(int8_t command_data[TRANSMIT_DATA_SIZE]);
+    void set_command(int8_t command_data[4]);
     void transmit();
 
     private:
