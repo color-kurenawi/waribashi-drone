@@ -109,3 +109,24 @@ void MPU6050::setup(){
     sampling_rate = 1.0 / ((float)SAMPLING_INTERVAL / 1000);
     MadgwickFilter.begin(sampling_rate);
 }
+
+void MPU6050::print_sensor_value(){
+    Serial.println(
+    (String)"aX, aY, aZ, gX, gY, gZ: "
+    + (String)accel_val[0] + (String)","
+    + (String)accel_val[1] + (String)","
+    + (String)accel_val[2] + (String)","
+    + (String)gyro_val[0] + (String)","
+    + (String)gyro_val[1] + (String)","
+    + (String)gyro_val[2]
+    );
+}
+
+void MPU6050::print_RPY(){
+    Serial.println(
+    (String)"Roll, Pitch, Yaw: "
+    + (String)rpy_val[0] + (String)","
+    + (String)rpy_val[1] + (String)","
+    + (String)rpy_val[2]
+    );
+}

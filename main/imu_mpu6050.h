@@ -33,6 +33,10 @@ class MPU6050 : public Adafruit_MPU6050 {
 
     void get_attitude(float RPY_data[3]);
 
+    // デバッグ用関数
+    void print_sensor_value();
+    void print_RPY();
+
     private:
     float sampling_rate;
     Adafruit_Sensor *mpu_accel, *mpu_gyro;
