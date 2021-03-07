@@ -4,7 +4,6 @@
 #include <BluetoothSerial.h>
 #include <Arduino.h>
 #include "waribashi-drone.h"
-#include "private-address.h"
 
 class Transmitter{
     public:
@@ -16,7 +15,7 @@ class Transmitter{
 
     private:
     bool connected;
-    int8_t transmit_command[TRANSMIT_DATA_SIZE] {'C', 0, 0, 0, 0};
+    uint8_t transmit_command[TRANSMIT_DATA_SIZE] {'C', 0, 0, 0, 0};
 };
 
 #endif

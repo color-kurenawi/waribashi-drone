@@ -1,4 +1,5 @@
 #include "transmitter.h"
+#include "private-address.h"
 
 BluetoothSerial SerialBT;
 
