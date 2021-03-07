@@ -11,6 +11,10 @@ class Controller{
     void update_command();
     void get_command(int8_t command_data[4]);
 
+    // debug用関数
+    void print_input();
+    void print_command();
+
     private:
     void input_command();
     void translate_command();

@@ -29,3 +29,18 @@ void Controller::translate_command(){
 void Controller::get_command(int8_t command_data[4]){
     for (int i = 0; i < 4; ++i ) command_data[i] = translated_command[i];
 }
+
+void Controller::print_input(){
+    Serial.println(String("left_x :") + String(left_x));
+    Serial.println(String("left_y :") + String(left_y));
+    Serial.println(String("right_x :") + String(right_x));
+    Serial.println(String("right_y :") + String(right_y));
+}
+
+void Controller::print_command(){
+    Serial.println("command:");
+    Serial.println(translated_command[0]);
+    Serial.println(translated_command[1]);
+    Serial.println(translated_command[2]);
+    Serial.println(translated_command[3]);
+}
