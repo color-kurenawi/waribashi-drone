@@ -1,6 +1,6 @@
 #include "imu_mpu6050.h"
 
-Madgwick MadgwickFilter
+Madgwick MadgwickFilter;
 
 MPU6050::MPU6050() {}
 
