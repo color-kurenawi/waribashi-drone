@@ -13,6 +13,9 @@ class PID{
     void calc_pid();
     void get_pid_res(float data[3]);
 
+    // デバッグ用関数
+    void print_pid_res();
+
     private:
     float Kp[3] = {10.0f, 10.0f, 10.0f};
     float Ki[3] = {0.1f, 0.1f, 0.1f};

@@ -30,3 +30,12 @@ void PID::update_pid(float RPY_data[3], int command_var[4]){
     calc_pid_elm();
     for (int i = 0; i < 3; ++i) pid_res[i] = Kp[i]*pid_p[i] + Ki[i]*pid_i[i] + Kd[i]*pid_d[i];
 }
+
+void PID::print_pid_res(){
+    Serial.println(
+    (String)"pid Rall, Pitch, Yaw speed: "
+    + (String)pid_res[0] + (String)","
+    + (String)pid_res[1] + (String)","
+    + (String)pid_res[2] + (String)","
+    );
+}
